@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Przygoda zwariowanej ferajny</title>
+<style>
+:root{--ink:#26334a}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(135deg,#fff0b8,#ffd7e8 45%,#c9f2ff);min-height:100vh}.wrap{max-width:1100px;margin:auto;padding:24px}.hero{text-align:center;padding:28px 18px;background:#ffffffd9;border:4px solid #fff;border-radius:26px;box-shadow:0 8px 24px #6d668033}.hero h1{font-size:clamp(25px,5vw,44px);margin:0 0 10px;color:#743c91}.hero p{font-size:18px;margin:0}.nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:22px 0}.nav a{display:inline-block;border-radius:15px;padding:13px 20px;font-size:16px;font-weight:bold;color:#fff;background:#438bd1;text-decoration:none;cursor:pointer;box-shadow:0 4px 0 #28629b}.nav a:nth-child(2){background:#e77a43;box-shadow:0 4px 0 #b95227}.nav a:nth-child(3){background:#42a878;box-shadow:0 4px 0 #26734e}.nav a:nth-child(4){background:#a16ac5;box-shadow:0 4px 0 #75439a}.nav a:hover,.nav a:focus-visible{filter:brightness(1.08);transform:translateY(-2px)}.nav a[aria-current="page"]{outline:3px solid #26334a;outline-offset:3px}.panel{background:#ffffffdf;border:3px solid white;border-radius:24px;padding:24px;margin:18px 0;box-shadow:0 7px 20px #6d668022}.panel h2{margin-top:0;color:#317d8d}.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.role{padding:15px;border-radius:16px;background:#f4e7ff;border:2px solid #d7b4ef}.role:nth-child(2){background:#e1f5ff;border-color:#9edcf2}.role:nth-child(3){background:#fff0d9;border-color:#ffd08a}.role:nth-child(4){background:#e1f8e9;border-color:#a4dfb7}.chapters{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:18px}.tile{min-height:150px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;border:4px solid #438bd1;border-radius:22px;background:#e7f5ff;color:#24527d;font-size:23px;font-weight:bold;text-decoration:none;transition:border-width .15s,transform .15s,box-shadow .15s}.tile:nth-child(2){background:#fff0df;border-color:#e77a43;color:#87401f}.tile:nth-child(3){background:#e6f8e9;border-color:#42a878;color:#205d3b}.tile:hover,.tile:focus-visible{border-width:9px;transform:translateY(-3px);box-shadow:0 8px 18px #26334a22;outline:none}.tile:focus-visible{outline:3px solid #26334a;outline-offset:4px}.notice{font-size:19px;font-weight:bold;text-align:center;padding:20px;background:#fff5cc;border-radius:16px}.hidden{display:none}footer{text-align:center;padding:20px;color:#526079}
+</style></head>
+<body><main class="wrap">
+<header class="hero"><h1>WITAMY NA OFICJALNEJ STRONIE KSIĄŻKI!</h1><p><strong>Przygoda zwariowanej ferajny</strong></p></header>
+<nav class="nav" aria-label="Menu"><a href="#about" aria-current="page">O książce :)</a><a href="#info">Informacje :)</a><a href="#chapters">Rozdziały</a><a href="#soon">Wkrótce :)</a></nav>
+<section id="about" class="panel"><h2>O książce :)</h2><p>Witaj w świecie książki <strong>„Przygoda zwariowanej ferajny”</strong>!</p><p>To świat psów i kotów — Psio-Koci Świat.</p></section>
+<section id="info" class="panel hidden"><h2>Informacje :)</h2><div class="roles"><div class="role"><strong>Pusia</strong><br>Prezydent kraju</div><div class="role"><strong>Helios</strong><br>Burmistrz</div><div class="role"><strong>Figa</strong><br>Premier</div><div class="role"><strong>Cleo</strong><br>Zastępca premiera</div></div></section>
+<section id="chapters" class="panel hidden"><h2>Rozdziały</h2><p class="notice">Nie ma jeszcze rozdziałów!</p><div class="chapters"><div class="tile">Rozdziały 1–100</div><div class="tile">Rozdziały 100–300</div><div class="tile">Rozdziały 300–500</div></div></section>
+<section id="soon" class="panel hidden"><h2>Wkrótce :)</h2><p class="notice">Więcej informacji już wkrótce!</p></section>
+<footer>🐾 „Przygoda zwariowanej ferajny” 🐾</footer></main>
+<script>
+(function(){
+  const validPages=['about','info','chapters','soon'];
+  function showPage(){
+    const requested=location.hash.replace('#','');
+    const id=validPages.includes(requested)?requested:'about';
+    document.querySelectorAll('main section').forEach(section=>section.classList.toggle('hidden',section.id!==id));
+    document.querySelectorAll('.nav a').forEach(link=>{
+      if(link.getAttribute('href')==='#'+id) link.setAttribute('aria-current','page');
+      else link.removeAttribute('aria-current');
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  window.addEventListener('hashchange',showPage);
+  document.addEventListener('DOMContentLoaded',showPage);
+  showPage();
+})();
+</script>
+</body></html>
